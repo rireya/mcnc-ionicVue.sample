@@ -11,6 +11,7 @@
 
 <script setup lang="ts">
 import { IonPage } from '@ionic/vue';
+import { onIonViewWillEnter, onIonViewDidEnter, onIonViewWillLeave, onIonViewDidLeave } from '@ionic/vue';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
@@ -38,4 +39,24 @@ function getDetail() {
       alert(JSON.stringify(data, null, '  '));
     })
 }
+
+// 화면 진입 애니메이션 표시 전
+onIonViewWillEnter(() => {
+  console.log('> Main page will enter');
+});
+
+// 화면 진입 애니메이션 표시 후
+onIonViewDidEnter(() => {
+  console.log('> Main page did enter');
+});
+
+// 화면 떠나기 애니메이션 표시 전
+onIonViewWillLeave(() => {
+  console.log('> Main page will leave');
+});
+
+// 화면 떠나기 애니메이션 표시 후
+onIonViewDidLeave(() => {
+  console.log('> Main page did leave');
+});
 </script>
